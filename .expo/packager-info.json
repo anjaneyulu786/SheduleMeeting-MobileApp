@@ -1,5 +1,9 @@
 {
-  "expoServerNgrokUrl": "https://t5-7hf.anonymous.mop-navigation.exp.direct",
-  "packagerNgrokUrl": "https://packager.76-vvy.anonymous.mop-navigation.exp.direct",
-  "ngrokPid": 8668
+  "expoServerNgrokUrl": "https://p8-wa8.anonymous.mop-navigation.exp.direct",
+  "packagerNgrokUrl": "https://packager.p8-wa8.anonymous.mop-navigation.exp.direct",
+  "ngrokPid": 10304,
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 1988
 }

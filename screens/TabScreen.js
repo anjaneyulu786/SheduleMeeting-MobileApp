@@ -6,19 +6,11 @@ import { Ionicons, SimpleLineIcons } from '@expo/vector-icons'
 
 import HomeScreen from './Home';
 import SignUp from './SignUp';
+import Business from './BusinessScreen';
 import SettingScreen from './Profile';
-import ForgotPass from './ForgotPassScreen';
 
 const SignoutScreen = () => {}
-
-// const style = StyleSheet.create({
-//     container: {
-//         flex: 1, 
-//         justifyContent: 'center', 
-//         alignItems: 'center'
-//     }
-// });
-
+  
 export const TabScreen = createBottomTabNavigator({
     Home: {
         screen: HomeScreen, 
@@ -30,23 +22,14 @@ export const TabScreen = createBottomTabNavigator({
         }
     }, 
     Services: {
-        screen: SignUp, 
+        screen: Business, 
         navigationOptions: {
-            tabBarLabel: 'Services', 
+            tabBarLabel: 'Business', 
             tabBarIcon: ({ tintColor }) => (
                 <Ionicons name="ios-card" color={tintColor} size={30} />
             )
         }
     },
-    // Services1: {
-    //     screen: ForgotPass, 
-    //     navigationOptions: {
-    //         tabBarLabel: 'Services1', 
-    //         tabBarIcon: ({ tintColor }) => (
-    //             <Ionicons name="ios-card" color={tintColor} size={30} />
-    //         )
-    //     }
-    // },
     Settings: {
         screen: SettingScreen, 
         navigationOptions: {
@@ -69,7 +52,8 @@ export const TabScreen = createBottomTabNavigator({
             }
         }
     }
-}, {
+},
+{
     tabBarOptions: {
         activeTintColor: '#0c91e0', 
         inactiveTintColor: 'grey', 

@@ -9,7 +9,7 @@ import { ActivityIndicator, Colors } from 'react-native-paper';
 export default class OTPScreen extends React.Component {
 
   static navigationOptions = {
-    header: null,
+    headerShown: false,
   };
 
   constructor(props) {

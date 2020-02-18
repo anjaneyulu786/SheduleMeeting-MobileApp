@@ -68,31 +68,31 @@ export default class SigninScreen extends React.Component {
     if (typeof response.message != 'undefined') {
       await Alert.alert('Error', response.message);
     } else {
-       //await AsyncStorage.setItem('userToken', response.result[0].token);
-       //await AsyncStorage.setItem('userName', response.result[0].firstName);
-      //  var user = resp.result[0];
-      //  await AsyncStorage.setItem('token', user.token);
-      //  await AsyncStorage.setItem('userId', user.firstName);
-      //  await AsyncStorage.setItem('emailAddress', user.firstName);
-      //  await AsyncStorage.setItem('firstName', user.firstName);
-      //  await AsyncStorage.setItem('lastName', user.firstName);
-      //  await AsyncStorage.setItem('mobileNumber', user.firstName);
-      //  await AsyncStorage.setItem('userType', user.firstName);
-      //  await AsyncStorage.setItem('img', user.firstName);
-      //  await AsyncStorage.setItem('businessId', user.firstName);
+      var user = response.result[0];
+      console.log("Test respnce ::", user);
+      await AsyncStorage.setItem('userToken', user.token);
+      await AsyncStorage.setItem('userName', user.firstName);
+      await AsyncStorage.setItem('token', user.token);
+      await AsyncStorage.setItem('userId', user.firstName);
+      await AsyncStorage.setItem('emailAddress', user.firstName);
+      await AsyncStorage.setItem('firstName', user.firstName);
+      await AsyncStorage.setItem('mobileNumber', user.firstName);
+      await AsyncStorage.setItem('userType', user.firstName);
+      await AsyncStorage.setItem('img', user.firstName);
+      await AsyncStorage.setItem('businessId', user.firstName);
       this.props.navigation.navigate('App');
     }
   };
-  
+
   render() {
     return (
       <KeyboardAvoidingView style={style.container} behavior="padding" enabled>
         {/* <Image source={imageLogo} style={style.logo} /> */}
-		
+
         <View style={style.form}>
-        	<Text 
-          style = { style.title }>
-          SheduleApp 
+          <Text
+            style={style.title}>
+            SheduleApp
           </Text>
 
           <TextInput
@@ -101,7 +101,7 @@ export default class SigninScreen extends React.Component {
             style={style.input}
             placeholder="Mobile Number"
             value={this.state.mobileNumber}
-            returnKeyType = { "next" }
+            returnKeyType={"next"}
           />
           <TextInput
             secureTextEntry={true}
@@ -109,7 +109,7 @@ export default class SigninScreen extends React.Component {
             style={style.input}
             placeholder="Password"
             value={this.state.password}
-            returnKeyType = { "done" }
+            returnKeyType={"done"}
           />
           {this.state.spinner && (
             <ActivityIndicator animating={true} color={Colors.red800} />
@@ -121,9 +121,9 @@ export default class SigninScreen extends React.Component {
           )}
         </View>
 
-        <TouchableHighlight 
-        onPress={() => this.props.navigation.navigate('ForgotPass')}>
-        <Text>Forgot your password ?</Text>
+        <TouchableHighlight
+          onPress={() => this.props.navigation.navigate('ForgotPass')}>
+          <Text>Forgot your password ?</Text>
         </TouchableHighlight>
 
 

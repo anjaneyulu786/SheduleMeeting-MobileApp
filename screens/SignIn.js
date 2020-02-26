@@ -69,17 +69,14 @@ export default class SigninScreen extends React.Component {
       await Alert.alert('Error', response.message);
     } else {
       var user = response.result[0];
-      console.log("Test respnce ::", user);
-      await AsyncStorage.setItem('userToken', user.token);
-      await AsyncStorage.setItem('userName', user.firstName);
-      await AsyncStorage.setItem('token', user.token);
-      await AsyncStorage.setItem('userId', user.firstName);
-      await AsyncStorage.setItem('emailAddress', user.firstName);
-      await AsyncStorage.setItem('firstName', user.firstName);
-      await AsyncStorage.setItem('mobileNumber', user.firstName);
-      await AsyncStorage.setItem('userType', user.firstName);
-      await AsyncStorage.setItem('img', user.firstName);
-      await AsyncStorage.setItem('businessId', user.firstName);
+      await AsyncStorage.setItem('userName', user.firstName); console.log('test session setItems ::', user.firstName);
+      await AsyncStorage.setItem('token', user.token); console.log('test session setItems ::', user.token);
+      await AsyncStorage.setItem("userId", JSON.stringify(user.userId) ); console.log('test session setItems ::', user.userId);
+      await AsyncStorage.setItem('emailAddress', JSON.stringify (user.emailAddress)); console.log('test session setItems ::', user.emailAddress);
+      await AsyncStorage.setItem('mobileNumber', JSON.stringify(user.mobile)); console.log('test session setItems ::', user.mobile);
+      await AsyncStorage.setItem('userType', JSON.stringify(user.userType)); console.log('test session setItems ::', user.userType);
+     // await AsyncStorage.setItem('img', JSON.stringify(user.img)); console.log('test session setItems ::', user.img);
+      await AsyncStorage.setItem('businessId', JSON.stringify(user.businessId)); console.log('test session setItems ::', user.businessId);
       this.props.navigation.navigate('App');
     }
   };

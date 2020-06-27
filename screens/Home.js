@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Alert,Modal,Button, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {Agenda} from 'react-native-calendars';
+import React, { Component } from 'react';
+import { Alert, Modal, Button, StyleSheet, AsyncStorage, Text, View, TouchableOpacity } from 'react-native';
+import { Agenda } from 'react-native-calendars';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -14,86 +14,83 @@ export default class AgendaScreen extends Component {
       isVisible1: false,
       mobileNumber: ""
     };
-
   }
+
+  // _appointmentHandler = async () => {
+  //   this.setState({
+  //     mobileNumber: await AsyncStorage.getItem('mobileNumber'),
+  //     token: await AsyncStorage.getItem('token')
+  //   });
+
+  //   console.log("Session mobileNumber ::", AsyncStorage.getItem('mobile'))
+  //   // fetch(`https://schedulemeetings.herokuapp.com/ui/userAppointments/`)
+  //   //   .then(response => response.json())
+  //   //   .then(data =>
+  //   //     console.log('Data:', data)
+  //   //   )
+  //   //   .catch(error => {
+  //   //     console.log("Error::", error)
+  //   //   });
+  // };
+
+  // componentDidMount() {
+  //   this._appointmentHandler();
+  // }
 
   render() {
     return (
-      <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
-      <Agenda
-        items={this.state.items}
-        loadItemsForMonth={this.loadItems.bind(this)}
-        selected={'2020-01-01'}
-        renderItem={this.renderItem.bind(this)}
-        renderEmptyDate={this.renderEmptyDate.bind(this)}
-        rowHasChanged={this.rowHasChanged.bind(this)}
-        appointments = {this._signInHandler.bind(this)}
-      />
-      
+      <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
+        <Agenda
+          //items={this.items.bind(this)}
+          loadItemsForMonth={this.loadItems.bind(this)}
+          selected={'2020-01-01'}
+          renderItem={this.renderItem.bind(this)}
+          renderEmptyDate={this.renderEmptyDate.bind(this)}
+          rowHasChanged={this.rowHasChanged.bind(this)}
+        />
+
         {/*Action button component !*/}
         <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6'  textStyle  = { {color: '#9b59b6'} } title="Create Appointment" onPress = {() => {this.setState({ isVisible: true})}}>
+          <ActionButton.Item buttonColor='#9b59b6' textStyle={{ color: '#9b59b6' }} title="Create Appointment" onPress={() => { this.setState({ isVisible: true }) }}>
             <Icon name="md-create" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#1abc9c' textStyle = { {color: '#1abc9c'} } title="Share Calender" onPress = {() => {this.setState({ isVisible1: true})}}>
+          <ActionButton.Item buttonColor='#1abc9c' textStyle={{ color: '#1abc9c' }} title="Share Calender" onPress={() => { this.setState({ isVisible1: true }) }}>
             <Icon name="md-done-all" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>
 
-      {/* Creat appointmnet model window */}
-        <Modal            
-          animationType = {"fade"}  
-          transparent = {false}  
-          visible = {this.state.isVisible}  
-          onRequestClose = {() =>{ console.log("Modal has been closed.") } }>  
-          {/*All views of Modal*/}  
-              <View style = {styles.modal}>  
-              <Text style = {styles.text}>Creat Appointment Modal is open!</Text>  
-              <Button title="Click To Close Modal" onPress = {() => {  
-                  this.setState({ isVisible:!this.state.isVisible})}}/>  
-          </View>  
+        {/* Creat appointmnet model window */}
+        <Modal
+          animationType={"fade"}
+          transparent={false}
+          visible={this.state.isVisible}
+          onRequestClose={() => { console.log("Modal has been closed.") }}>
+          {/*All views of Modal*/}
+          <View style={styles.modal}>
+            <Text style={styles.text}>Creat Appointment Modal is open!</Text>
+            <Button title="Click To Close Modal" onPress={() => {
+              this.setState({ isVisible: !this.state.isVisible })
+            }} />
+          </View>
         </Modal>
-      {/* Share Calender model window */}
-        <Modal            
-          animationType = {"fade"}  
-          transparent = {false}  
-          visible = {this.state.isVisible1}  
-          onRequestClose = {() => {} }>  
-          {/*All views of Modal*/}  
-              <View style = {styles.modal}>  
-              <Text style = {styles.text}>Share Calender model is open!</Text>  
-              <Button title="Click To Close Modal" onPress = {() => {  
-                  this.setState({ isVisible1:!this.state.isVisible1})}}/>  
-          </View>  
+        {/* Share Calender model window */}
+        <Modal
+          animationType={"fade"}
+          transparent={false}
+          visible={this.state.isVisible1}
+          onRequestClose={() => { }}>
+          {/*All views of Modal*/}
+          <View style={styles.modal}>
+            <Text style={styles.text}>Share Calender model is open!</Text>
+            <Button title="Click To Close Modal" onPress={() => {
+              this.setState({ isVisible1: !this.state.isVisible1 })
+            }} />
+          </View>
         </Modal>
       </View>
     );
-    
+
   }
-
-
-  _signInHandler = async () => {
-    mobileNumber = await AsyncStorage.getItem('token');
-
-    const response = await fetch(`https://schedulemeetings.herokuapp.com/ui/userAppointments/`, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        mobileNumber: this.state.mobileNumber,
-      }),
-    })
-
-    if (typeof response.message != 'undefined') {
-      await Alert.alert('Error', response.message);
-    } else {
-     await console.log('Responce is ::::', response);
-      //this.props.navigation.navigate('App');
-    }
-  };
-
 
   loadItems(day) {
     setTimeout(() => {
@@ -112,7 +109,7 @@ export default class AgendaScreen extends Component {
         }
       }
       const newItems = {};
-      Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
+      Object.keys(this.state.items).forEach(key => { newItems[key] = this.state.items[key]; });
       this.setState({
         items: newItems
       });
@@ -121,8 +118,8 @@ export default class AgendaScreen extends Component {
 
   renderItem(item) {
     return (
-      <TouchableOpacity 
-        style={[styles.item, {height: item.height}]} 
+      <TouchableOpacity
+        style={[styles.item, { height: item.height }]}
         onPress={() => Alert.alert(item.name)}
       >
         <Text>{item.name}</Text>
@@ -165,24 +162,24 @@ const styles = StyleSheet.create({
   },
   emptyDate: {
     height: 15,
-    flex:1,
+    flex: 1,
     paddingTop: 30
   },
-  modal: {  
-    justifyContent: 'center',  
-    alignItems: 'center',   
-    backgroundColor : "#9b59b6",   
-    height: 300 ,  
-    width: '80%',  
-    borderRadius:10,  
-    borderWidth: 1,  
-    borderColor: '#fff',    
-    marginTop: 80,  
-    marginLeft: 40,  
-     
-  },  
-  text: {  
-  color: '#3f2949',  
-   
-  }  
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "#9b59b6",
+    height: 300,
+    width: '80%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    marginTop: 80,
+    marginLeft: 40,
+
+  },
+  text: {
+    color: '#3f2949',
+
+  }
 });

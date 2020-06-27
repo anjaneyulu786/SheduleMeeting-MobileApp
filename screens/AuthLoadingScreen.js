@@ -10,7 +10,11 @@ export default class AuthLoadingScreen extends React.Component {
 
     _bootstrap = async () => {
         const userToken = await AsyncStorage.getItem('token');
-        console.log( 'Get local stirage item',userToken)
+        console.log( 'Get local stirage item1',userToken)
+        console.log( 'Get local stirage item2', await AsyncStorage.getItem('userName'))
+        console.log( 'Get local stirage item3', await AsyncStorage.getItem('userId'));
+        console.log( 'Get local stirage item4',await AsyncStorage.getItem('mobileNumber'));
+
         this.props.navigation.navigate(userToken ? 'App' : 'Auth');
     }
 

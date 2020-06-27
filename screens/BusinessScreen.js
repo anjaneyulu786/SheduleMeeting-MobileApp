@@ -1,101 +1,45 @@
-// import React from 'react';
-// import { Alert, StyleSheet, Text, View } from 'react-native';
-
-// const Business = () => {
-
-//   return (
-//     <View>
-//     <Text>Hai This is Business page</Text>
-    
-//     </View>
-    
-//   );
-// };
-
-// export default Business;
-
-// SignUp.js
-import React from 'react'
-import {
-  View,
-  Button,
-  TextInput,
-  StyleSheet
-} from 'react-native'
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class Business extends React.Component {
-  state = {
-    username: '', password: '', email: '', phone_number: ''
-  }
-  onChangeText = (key, val) => {
-    this.setState({ [key]: val })
-  }
-  signUp = async () => {
-    const { username, password, email, phone_number } = this.state
-    try {
-      // here place your signup logic
-      console.log('user successfully signed up!: ', success)
-    } catch (err) {
-      console.log('error signing up: ', err)
-    }
-  }
- 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder='Username'
-          autoCapitalize="none"
-          placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('username', val)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='Password'
-          secureTextEntry={true}
-          autoCapitalize="none"
-          placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('password', val)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='Email'
-          autoCapitalize="none"
-          placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('email', val)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='Phone Number'
-          autoCapitalize="none"
-          placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('phone_number', val)}
-        />
-        <Button
-          title='Sign Up'
-          onPress={this.signUp}
-        />
+          <Image style={styles.avatar} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+          <View style={styles.body}>
+            <View style={styles.bodyContent}>
+              <Text style={styles.name}>Profile</Text>
+              
+            </View>
+          </View>
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  input: {
-    width: 350,
-    height: 55,
-    backgroundColor: '#42A5F5',
-    margin: 10,
-    padding: 8,
-    color: 'white',
-    borderRadius: 14,
-    fontSize: 18,
-    fontWeight: '500',
+  avatar: {
+    width: 130,
+    height: 130,
+    borderRadius: 63,
+    borderWidth: 4,
+    borderColor: "white",
+    marginBottom: 10,
+    alignSelf: 'center',
+    position: 'absolute',
+    marginTop: 30
   },
-  container: {
+  body: {
+    marginTop: 150,
+  },
+  bodyContent: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+    alignItems: 'center',
+    padding: 30,
+  },
+  name: {
+    fontSize: 28,
+    color: "#696969",
+    fontWeight: "600"
+  },
+});

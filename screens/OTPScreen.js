@@ -66,36 +66,36 @@ export default class OTPScreen extends React.Component {
         <View style={style.container}>
           <TextInput
             keyboardType="phone-pad"
-            onChangeText={mobileNumber => this.setState ({ mobileNumber })}
+            onChangeText={mobileNumber => this.setState({ mobileNumber })}
             style={style.input}
             placeholder="Enter OTP"
             value={this.state.mobileNumber}
           />
-           <TextInput
+          <TextInput
             secureTextEntry={true}
             onChangeText={NewPassword => this.setState({ NewPassword })}
             style={style.input}
             placeholder="New Password"
             value={this.state.NewPassword}
-            returnKeyType = { "done" }
+            returnKeyType={"done"}
           />
-           <TextInput
+          <TextInput
             secureTextEntry={true}
             onChangeText={ConformPassword => this.setState({ ConformPassword })}
             style={style.input}
             placeholder="Conform Password"
             value={this.state.ConformPassword}
-            returnKeyType = { "done" }
+            returnKeyType={"done"}
           />
           {this.state.spinner &&
             <ActivityIndicator animating={true} color={Colors.red800} />
           }
           {!this.state.spinner &&
             <Button
-            style = { style.signUpbtn }
+              style={style.signUpbtn}
               title="RESET PASSWORD"
               onPress={this._resetPasswordHandler}
-              //onPress={() => this.props.navigation.navigate('App')}
+            //onPress={() => this.props.navigation.navigate('App')}
             />
           }
         </View>

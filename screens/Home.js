@@ -16,27 +16,6 @@ export default class AgendaScreen extends Component {
     };
   }
 
-  // _appointmentHandler = async () => {
-  //   this.setState({
-  //     mobileNumber: await AsyncStorage.getItem('mobileNumber'),
-  //     token: await AsyncStorage.getItem('token')
-  //   });
-
-  //   console.log("Session mobileNumber ::", AsyncStorage.getItem('mobile'))
-  //   // fetch(`https://schedulemeetings.herokuapp.com/ui/userAppointments/`)
-  //   //   .then(response => response.json())
-  //   //   .then(data =>
-  //   //     console.log('Data:', data)
-  //   //   )
-  //   //   .catch(error => {
-  //   //     console.log("Error::", error)
-  //   //   });
-  // };
-
-  // componentDidMount() {
-  //   this._appointmentHandler();
-  // }
-
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>

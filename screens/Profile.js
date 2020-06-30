@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View,Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
-export default class  Profile extends React.Component {
+export default class Profile extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -11,14 +11,14 @@ export default class  Profile extends React.Component {
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>Profile Page</Text>
-      
-              
+
+
             </View>
           </View>
 
 
 
-          
+
         </ScrollView>
       </View>
     );

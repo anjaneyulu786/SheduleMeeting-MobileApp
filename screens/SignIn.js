@@ -69,7 +69,7 @@ export default class SigninScreen extends React.Component {
       await Alert.alert('Error', response.message);
     } else {
       var user = response.result[0];
-      await AsyncStorage.setItem('userName', JSON.stringify (user.firstName)); console.log('test session setItems ::', user.firstName);
+      await AsyncStorage.setItem('userName', JSON.stringify(user.firstName)); console.log('test session setItems ::', user.firstName);
       await AsyncStorage.setItem('token', JSON.stringify(user.token)); console.log('test session setItems ::', user.token);
       await AsyncStorage.setItem("userId", JSON.stringify(user.userId)); console.log('test session setItems ::', user.userId);
       await AsyncStorage.setItem('emailAddress', JSON.stringify(user.emailAddress)); console.log('test session setItems ::', user.emailAddress);

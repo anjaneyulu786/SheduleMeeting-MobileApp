@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
-  KeyboardAvoidingView, View, Button, Alert, Text,TouchableOpacity, AsyncStorage, StyleSheet, TextInput, Dimensions
+  KeyboardAvoidingView, View, Button, Alert, Text, TouchableOpacity, AsyncStorage, StyleSheet, TextInput, Dimensions
 } from 'react-native';
 import { ActivityIndicator, Colors } from 'react-native-paper';
-import ConfirmGoogleCaptcha  from 'react-recaptcha-google'
+import ConfirmGoogleCaptcha from 'react-recaptcha-google'
 
 const siteKey = '6Lf41K0UAAAAAHd3FeZbJsMbL00-Beqyk33NHqtp';
 const baseUrl = 'https://google.com';
@@ -106,7 +106,7 @@ export default class SignUp extends React.Component {
           />
           <TextInput
             keyboardType="email-address"
-            onChangeText={email => this.setState ({ email })}
+            onChangeText={email => this.setState({ email })}
             style={style.input}
             placeholder="Email Address"
             value={this.state.email}
@@ -127,7 +127,7 @@ export default class SignUp extends React.Component {
           />
           <TextInput
             secureTextEntry={true}
-            onChangeText={conformPassword => this.setState ({ conformPassword })}
+            onChangeText={conformPassword => this.setState({ conformPassword })}
             style={style.input}
             placeholder="Conform Password"
             value={this.state.conformPassword}
@@ -138,14 +138,14 @@ export default class SignUp extends React.Component {
           }
           {!this.state.spinner &&
             <Button
-            style = { style.signUpbtn }
+              style={style.signUpbtn}
               title="SignUp!"
               onPress={this._signInHandler}
             />
           }
 
-          
-        {/* <ConfirmGoogleCaptcha
+
+          {/* <ConfirmGoogleCaptcha
           ref={_ref => (this.captchaForm = _ref)}
           siteKey={siteKey}
           baseUrl={baseUrl}
@@ -160,10 +160,10 @@ export default class SignUp extends React.Component {
         </TouchableOpacity>
         <Text>{code}
         </Text> */}
-      
+
 
         </View>
-    
+
       </KeyboardAvoidingView>
     );
   }

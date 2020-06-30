@@ -29,7 +29,7 @@ export default class ForgotPass extends React.Component {
     var formData = new FormData();
     formData.append('mobileNumber', mobileNumber);
 
-    alert(" forgot button press ::", JSON.stringify(formData ));
+    alert(" forgot button press ::", JSON.stringify(formData));
     this.setState({ spinner: true });
     const response = await fetch(`https://schedulemeetings.herokuapp.com/ui/forgotPassword`, {
       method: 'POST',
@@ -63,7 +63,7 @@ export default class ForgotPass extends React.Component {
         <View style={style.container}>
           <TextInput
             keyboardType="phone-pad"
-            onChangeText={ mobileNumber => this.setState ({ mobileNumber })}
+            onChangeText={mobileNumber => this.setState({ mobileNumber })}
             style={style.input}
             placeholder="Mobile Number"
             value={this.state.mobileNumber}
@@ -73,10 +73,10 @@ export default class ForgotPass extends React.Component {
           }
           {!this.state.spinner &&
             <Button
-            style = { style.signUpbtn }
+              style={style.signUpbtn}
               title="GET OTP!"
               onPress={this._forgotPassHandler}
-              //onPress={() => this.props.navigation.navigate('OTPScreen')}
+            //onPress={() => this.props.navigation.navigate('OTPScreen')}
             />
           }
         </View>
